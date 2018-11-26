@@ -1,0 +1,90 @@
+<head>
+    <% include partials/head %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Funkadaa</title>
+
+</head>
+<style>
+ #tabs-swipe-demo{
+    margin-top: 20px;
+}
+</style>
+<body>
+    <% include partials/header %>
+    <div class="col s12 fixme profile-section-container">
+        <ul class="tabs   tabs-fixed-width white red-text lighten-1 z-depth-3" id="tabs-swipe-demo">
+            <li class="tab col s3"><a href="/profile/following" target="_parent"><b>Art Works</b></a></li>
+            <li class="tab col s3"><a href="/profile/followers" target="_parent"><b>People</b></a></li>
+
+        </ul>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script>
+
+    
+    $('select').material_select();
+    var fixmeTop = $('.fixme').offset().top;
+    $(window).scroll(function () {
+        var currentScroll = $(window).scrollTop();
+        if (currentScroll >= fixmeTop - 270) {
+            $('.fixme').css({
+                position: 'fixed',
+                top: '50px',
+                left: '0',
+
+            });
+        } else {
+            $('.fixme').css({
+                position: 'static',
+
+            });
+        }
+    });
+
+
+
+
+$(document).ready( function() { 
+    $('#searchbarslot').append('<form method="GET" id="form1"><input type="text" id="search"  class="autocomplete black-text" placeholder="Search.." style="z-index:9999999999999;"></form><li><button  id="submit-button" class="red-text" style="margin-top:-75px;margin-left:135px;"> <i class="material-icons">search</i></button> </li>' ).css('display','block');   
+    });
+
+
+$(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Ali": null,
+        "Ahmad":null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      },
+    });
+  });
+        
+
+
+document.getElementById("submit-button").onclick = function() {
+		$("#form1").submit();
+	}
+
+
+
+
+
+</script>
+
+
+
+
+</html>

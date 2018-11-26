@@ -1,0 +1,195 @@
+<html lang="en">
+
+<style>
+
+    .modal
+    {
+    top:70px!important;
+    background-color: rgba(0,0,0,.10000) !important;
+    overflow: hidden!important;
+    padding: 0px!important;
+    }
+    #test1, #test2, #test3, #test4, #test5{
+    min-height: 100%!important;
+    min-width: auto!important;
+    }
+    #main
+    {
+    z-index: 2!important;
+    }
+    img,#test1
+    {
+    z-index: -1!important;
+    }
+
+    #section
+    {
+    z-index: 0!important;
+    }
+</style>
+
+<head>
+    <% include partials/head %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Funkadaa</title>
+
+</head>
+
+<body>
+    <% include partials/header %>
+
+
+    <div class="white ligthen-4" id="main">
+        <div class="row">
+            <div class="col s12 fixme category-menu-container" style="margin-top: 20px">
+                <ul class="tabs tabs-fixed-width white red-text lighten-1  z-depth-3" id="tabs-swipe-demo">
+                    <li class="tab col s3"><a class="active" href="/globalfeed" target="_parent" onload="checkActive(this)"><b>Everything</b></a></li>
+                    <li class="tab col s3"><a href="/globalfeed/Paintings" target="_parent" onload="checkActive(this)"><b>Paintings</b></a></li>
+                    <li class="tab col s3"><a href="/globalfeed/Sketches" target="_parent" onload="checkActive(this)"><b>Sketches</b></a></li>
+                    <li class="tab col s3"><a href="/globalfeed/Handicrafts" target="_parent" onload="checkActive(this)"><b>HandiCrafts</b></a></li>
+                    <li class="tab col s3"><a href="/globalfeed/Calligraphy" target="_parent" onload="checkActive(this)"><b>Calligraphy</b></a></li>
+                </ul>
+            </div>
+
+
+
+            <div id="test1" class="col s12 white">
+                <section id="section">
+                    <div class="container gal-container">
+
+                        <% products.forEach( function(product,index) { %>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+
+
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#<%=index %>">
+                                    <img src='<%= product.ProductDp %>'>
+                                </a>
+                                <div class="modal modal-fullscreen fade" id="<%=index %>" tabindex="-1" role="dialog"
+                                    style="overflow:visible!important;">
+                                    <div class="modal-dialog" id="<%=index %>" role="document">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
+
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <img src='<%= product.ProductDp %>'>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            COMMENTS, LIKES, CHAWALS
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-12 description">
+                                                            <h4>
+                                                                <%= product.Description %>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <% }) %>
+
+                    </div>
+                </section>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script>
+
+
+
+
+
+   $(document).ready( function() { 
+
+    
+    $('#searchbarslot').append('<input type="text" id="search"  class="autocomplete black-text" placeholder="Search.." style="z-index:9999999999999;"><li><a href="/search" class="red-text" style="margin-top:-75px;margin-left:135px;"> <i class="material-icons">search</i> </a></li>').css('display','block');    
+    });
+
+
+$(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Ali": null,
+        "Ahmad":null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      },
+    });
+  });
+        
+
+
+
+
+    $('ul.tabs .tab').each(function checkActive(item) {
+        var $a = $(this).find('a');
+        if ($.trim(location.pathname) == $.trim($a.attr('href'))) {
+            $('.tabs .active').removeClass("active");
+            $.addClass("active");
+        }
+    });
+    
+
+    $(document).ready(function () {
+        $('ul.tabs').tabs({
+            responsiveThreshold: 1920,
+        });
+
+    });
+
+    $('select').material_select();
+    var fixmeTop = $('.fixme').offset().top;
+    $(window).scroll(function () {
+        var currentScroll = $(window).scrollTop();
+        if (currentScroll >= fixmeTop - 270) {
+            $('.fixme').css({
+                position: 'fixed',
+                top: '50px',
+                left: '0',
+
+            });
+        } else {
+            $('.fixme').css({
+                position: 'static',
+
+            });
+        }
+    });
+</script>
+
+</html>

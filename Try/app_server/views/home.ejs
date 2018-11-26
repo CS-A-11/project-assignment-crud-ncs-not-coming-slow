@@ -1,0 +1,71 @@
+
+<html lang="en">
+
+<head>
+
+<% include partials/head %>
+
+</head>
+<body>
+  <% include partials/header %>
+
+
+<% posts.forEach( post => { %>
+<div class="list">
+    <ul>
+        <li><a href="https://goo.gl/TChSJ4" target='_blank'><img src=<%=post.userdp %>> class="avatar avatar-50"><%=post.name %></a></li>
+        <li><a href='#'>Log in</a></li>
+        <li><a href='#'>Sign up</a></li>
+        <li><a href='#'>Report this user</a></li>
+        <li class='collapse'><a href='#'>Collapse the bar</a></li>
+        </ul>
+    </div>
+<section id="sec2">
+  <div class= 'insta fade-scroll'>
+    <div class='top-insta'>
+      <a href='https://goo.gl/Y9YWLo' target='_blank'><img src='<%=post.userdp %>'></a>
+      <a href='https://goo.gl/Y9YWLo' target='_blank' class='user'><%=post.name %>
+</a>
+      <span class= 'dot'></span>
+    </div>
+    <div class='post'>
+        <div class="overlay">
+        <span></span>
+        </div>
+      <img src='<%=post.productdp %>' >
+ </div>
+    <div class='footer'>
+      
+      <div class='react'>
+        <a href='#' role='button'><span class='love'></span></a>
+        <a href='#' role='button'><span class='comment'></span></a>
+        <a href='#' role='button'><span class='save'></span></a>
+        
+      </div>
+      
+      <div class='caption'>
+        <a href='#'><%=post.name %></a><span><%=post.description%></span>
+      </div>
+      
+      <div class='comment-section'>
+        <input type='text' id='cmnt' placeholder='Add a comment...'>
+        <span class='dot02'></span>
+      </div>
+        
+    </div> <!-- end Footer -->
+    
+  </div> <!-- end Insta -->
+  <div class="a1 fade-scroll"></div>
+  <div class="a1 fade-scroll"></div>
+  <div class="a1 fade-scroll"></div>
+  <div class="a1 fade-scroll"></div>
+  <div class="a1 fade-scroll"></div>
+</section> <!-- end section -->
+<% }) %>
+
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</html>
+
